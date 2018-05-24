@@ -11,8 +11,8 @@ angular.module('app', [])
       this.todos.push(this.newTodo);
       this.newTodo = '';
     }
-    this.removeTodo = ()=>{
-      this.todos.pop();
+    this.removeTodo = (index)=>{
+      this.todos.splice(index, 1);
     }
   },
   template: `
@@ -22,8 +22,8 @@ angular.module('app', [])
       <button ng-click="$ctrl.addTodo()">add</button>
       <ul>
         <li
-          ng-repeat="todo in $ctrl.todos"
-          ng-click="$ctrl.removeTodo()"
+          ng-repeat="todo in $ctrl.todos track by $index"
+          ng-click="$ctrl.removeTodo($index)"
           >
             {{todo}}
         </li>
