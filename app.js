@@ -21,15 +21,23 @@ angular.module('app', [])
       <input ng-model="$ctrl.newTodo">
       <button ng-click="$ctrl.addTodo()">add</button>
       <ul>
-        <li
+        <entry
+          todo="todo"
           ng-repeat="todo in $ctrl.todos track by $index"
-          ng-click="$ctrl.removeTodo($index)"
-          >
-            {{todo}}
-        </li>
+          ng-click="$ctrl.removeTodo($index)" />
       </ul>
       <hr/>
       <pre>{{$ctrl.todos | json}}</pre>
     </div>
+  `
+})
+.component('entry', {
+  bindings:{
+    todo: '<'
+  },
+  template: `
+    <li>
+      {{$ctrl.todo}}
+    </li>
   `
 })
