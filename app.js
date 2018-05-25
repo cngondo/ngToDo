@@ -1,12 +1,9 @@
 angular.module('app', [])
 .component('todoList', {
+  bindings:{
+    todos: '<'
+  },
   controller: function(){
-    this.todos = [
-      'wake up',
-      'drink coffee',
-      'code angular'
-    ];
-
     this.addTodo = ()=>{
       this.todos.push(this.newTodo);
       this.newTodo = '';
@@ -33,7 +30,7 @@ angular.module('app', [])
 })
 .component('entry', {
   bindings:{
-    todo: '<'
+    todo: '<' //one way data binding
   },
   template: `
     <li>
